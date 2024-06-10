@@ -1,0 +1,88 @@
+﻿
+@page "/edit-contacts"
+@page "/edit-contacts/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+
+@if (Id == null)
+{
+    <p><em>Add contact</em></p>
+}
+else
+{
+    <h3>Edit Contact</h3>
+}
+
+<EditForm Model="Contact" OnSubmit="HandleSubmit">
+    <div>
+        <label for="Civilite">Civilite:</label>
+        <InputText id="Civilite" @bind-Value="Contact.Civilite" class="form-control" />
+    </div>
+    <div>
+        <label for="Nom">Nom:</label>
+        <InputText id="Nom" @bind-Value="Contact.Nom" class="form-control" />
+    </div>
+    <div>
+        <label for="Prenom">Prenom:</label>
+        <InputText id="Prenom" @bind-Value="Contact.Prenom" class="form-control" />
+    </div>
+    <div>
+        <label for="Entreprise">Entreprise:</label>
+        <InputSelect id="Entreprise" @bind-Value="Contact.Entreprise" class="form-control">
+            <option value="">Select an option</option>
+            <option value="Piste">Piste</option>
+            <option value="Prospect">Prospect</option>
+            <option value="Client">Client</option>
+        </InputSelect>
+    </div>
+    <div>
+        <label for="Fonction">Fonction:</label>
+        <InputText id="Fonction" @bind-Value="Contact.Fonction" class="form-control" />
+    </div>
+    <div>
+        <label for="Telephone">Telephone:</label>
+        <InputText id="Telephone" @bind-Value="Contact.Telephone" class="form-control" />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <InputText id="Email" @bind-Value="Contact.Email" class="form-control" />
+    </div>
+    <div>
+        <label for="Adresse">Adresse:</label>
+        <InputText id="Adresse" @bind-Value="Contact.Adresse" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    public Contact Contact { get; set; } = new Contact();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id is not null)
+        {
+            var result = await Http.GetFromJsonAsync<Contact>($"/contacts/{(int)Id}");
+            if (result is not null)
+                Contact = result;
+        }
+    }
+
+    async Task HandleSubmit()
+    {
+        if (Id is not null)
+        {
+            var result = await Http.PutAsJsonAsync($"/contacts/{Id}", Contact);
+            Contact = await result.Content.ReadFromJsonAsync<Contact>();
+        }
+        else
+        {
+            var result = await Http.PostAsJsonAsync("/contacts", Contact);
+            Contact = await result.Content.ReadFromJsonAsync<Contact>();
+        }
+
+        NavigationManager.NavigateTo("/contacts");
+    }
+}

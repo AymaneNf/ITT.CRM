@@ -1,0 +1,99 @@
+﻿@page "/contacts"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Contact List</PageTitle>
+
+<input type="text" id="searchInput" placeholder="Search contacts..." @oninput="SearchContacts" />
+
+<button class="btn btn-primary" @onclick="AddContact">Add a new contact</button>
+
+@if (!contacts.Any())
+{
+    <p>No contacts available.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Civilite</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Entreprise</th>
+                <th>Fonction</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in contacts)
+            {
+                <tr>
+                    <td>@contact.Id</td>
+                    <td>@contact.Civilite</td>
+                    <td>@contact.Nom</td>
+                    <td>@contact.Prenom</td>
+                    <td>@contact.Entreprise</td>
+                    <td>@contact.Fonction</td>
+                    <td>@contact.Telephone</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Adresse</td>
+                    <td><button class="btn btn-primary" @onclick="@(() => EditContact(@contact.Id))">Edit</button></td>
+                    <td><button class="btn btn-danger" @onclick="@(() => DeleteContact(@contact.Id))">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Contact> contacts = new List<Contact>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadContacts();
+    }
+
+    void AddContact()
+    {
+        NavigationManager.NavigateTo("/edit-contacts");
+    }
+
+    void EditContact(int id)
+    {
+        NavigationManager.NavigateTo($"/edit-contacts/{id}");
+    }
+
+    async Task DeleteContact(int id)
+    {
+        await Http.DeleteAsync($"/contacts/{id}");
+        await LoadContacts();
+    }
+
+    async Task LoadContacts()
+    {
+        var result = await Http.GetFromJsonAsync<List<Contact>>("/contacts");
+        if (result is not null)
+            contacts = result;
+    }
+
+    async Task SearchContacts(ChangeEventArgs e)
+    {
+        var searchQuery = e.Value.ToString();
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            var result = await Http.GetFromJsonAsync<List<Contact>>($"/contacts/search?searchTerm={Uri.EscapeDataString(searchQuery)}");
+            if (result is not null)
+                contacts = result;
+        }
+        else
+        {
+            await LoadContacts(); 
+        }
+    }
+}

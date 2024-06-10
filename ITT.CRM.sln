@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITT.CRM.WebAPI", "ITT.CRM.WebAPI\ITT.CRM.WebAPI.csproj", "{E438640E-5A67-4513-8B25-C80AD5BDB616}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITT.CRM.Domain", "ITT.CRM.Domain\ITT.CRM.Domain.csproj", "{4821252A-EFC0-4566-BFD4-8E41266F13F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITT.CRM.Core", "ITT.CRM.Core\ITT.CRM.Core.csproj", "{AA226AF7-4A64-4ED5-A4E0-0FBC79B56B50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITT.CRM.App", "ITT.CRM.App\ITT.CRM.App.csproj", "{9EE1DE54-F97A-4FED-AEE2-09568691559C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITT.CRM.Infrastructure", "ITT.CRM.Infrastructure\ITT.CRM.Infrastructure.csproj", "{DDF24975-5943-49B6-9A25-08177AB8DF78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITT.CRM.Frontend", "ITT.CRM.Frontend\ITT.CRM.Frontend.csproj", "{21A443AB-C7CE-4116-A3B2-BC740DA542BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E438640E-5A67-4513-8B25-C80AD5BDB616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E438640E-5A67-4513-8B25-C80AD5BDB616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E438640E-5A67-4513-8B25-C80AD5BDB616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E438640E-5A67-4513-8B25-C80AD5BDB616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4821252A-EFC0-4566-BFD4-8E41266F13F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4821252A-EFC0-4566-BFD4-8E41266F13F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4821252A-EFC0-4566-BFD4-8E41266F13F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4821252A-EFC0-4566-BFD4-8E41266F13F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA226AF7-4A64-4ED5-A4E0-0FBC79B56B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA226AF7-4A64-4ED5-A4E0-0FBC79B56B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA226AF7-4A64-4ED5-A4E0-0FBC79B56B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA226AF7-4A64-4ED5-A4E0-0FBC79B56B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE1DE54-F97A-4FED-AEE2-09568691559C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE1DE54-F97A-4FED-AEE2-09568691559C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE1DE54-F97A-4FED-AEE2-09568691559C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE1DE54-F97A-4FED-AEE2-09568691559C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF24975-5943-49B6-9A25-08177AB8DF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF24975-5943-49B6-9A25-08177AB8DF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF24975-5943-49B6-9A25-08177AB8DF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF24975-5943-49B6-9A25-08177AB8DF78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A443AB-C7CE-4116-A3B2-BC740DA542BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A443AB-C7CE-4116-A3B2-BC740DA542BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A443AB-C7CE-4116-A3B2-BC740DA542BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A443AB-C7CE-4116-A3B2-BC740DA542BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F3A0097-49FE-4B84-932F-78D529E6E42D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@ITT.CRM.WebAPI_HostAddress = http://localhost:5281
+
+GET {{ITT.CRM.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
